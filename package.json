@@ -1,0 +1,29 @@
+{
+  "name": "couch-streams",
+  "version": "0.0.0",
+  "description": "CouchDB stream utils.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/snbartell/couch-streams.git"
+  },
+  "author": "Stephen Bartell",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "749c3eb09b9b9344da57c14e9693cc314739bafc",
+  "bugs": {
+    "url": "https://github.com/snbartell/couch-streams/issues"
+  },
+  "dependencies": {
+    "through": "~2.3.4",
+    "errs": "~0.2.4",
+    "event-stream": "~3.0.14",
+    "request": "~2.21.0"
+  },
+  "devDependencies": {
+    "tap": "~0.4.3"
+  }
+}
