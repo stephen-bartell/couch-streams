@@ -1,10 +1,12 @@
-var Changes = require('../index').changes
+var Stream = require('../index')
 var es = require('event-stream')
 
-var stream = Changes('http://localhost:5984/')
-.on('error', function (er) {
+var stream = Stream('http://localhost:5984/endpoints/_design/list/_view/all')
+if (!stream)
+  return console.log('no stream')
+
+stream.on('error', function (er) {
   console.log(er)
 })
-.pipe(es.split())
-.pipe(es.parse())
+.pipe(stream.parse())
 .pipe(es.log())
