@@ -26,22 +26,20 @@ module.exports = function (uri, opts) {
   this.feed = qs.feed || 'normal'
   this.since = qs.since || 0
 
-  // figure out how to parse this thing.
+  // // figure out how to parse this thing.
   if (!opts)
     opts = {json: true, parser: undefined}
-  this.parser = 
-  (opts.json)
-  ? ('_changes' == this.type)
+
+  this.parser = null
+  if (opts.json)
+    this.parser = ('_changes' == this.type)
     ? ('continuous' == this.feed)
       ? parsers.continuous
       : parsers.longpoll
-    : null
-  :null
+    : ('_all_docs' == this.type || 'view' == this.type || 'filter' == this.type)
+      ? parsers.all_docs
+      : parsers.other
 
-  this.parser =
-  ('_all_docs' == this.type || 'view' == this.type || 'filter' == this.type)
-    ? parsers.all_docs
-    : parsers.other
 
   var downstream = lib.stream(uri)
   downstream.parse = this.parser
