@@ -10,9 +10,6 @@ var inherits = require('util').inherits
 var jsonstream = require('JSONStream')
 
 module.exports = function CS (uri, opts) {
-  if (!opts)
-    opts = {json: false, parser: null}
-
   var u = url.parse(uri)
   var qs = querystring.parse(u.query)
   var feed = qs.feed || 'normal'
